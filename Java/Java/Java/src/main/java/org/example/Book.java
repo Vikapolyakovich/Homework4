@@ -25,20 +25,19 @@ public class Book {
             }
             phonebook.put(names.get(i), templist);
         }
-
+        System.out.println(phonebook);
 
         //сортировка контактов
         HashMap<String, ArrayList> sorted_book = new LinkedHashMap<>(phonebook);
         phonebook.entrySet().stream()
-                        .sorted(Map.Entry.comparingByValue(Comparator.comparingInt(e -> (int) e.get(0))))
-                        .forEach(e->sorted_book.put(e.getKey(), e.getValue()));
+                .sorted(Map.Entry.comparingByValue((o1, o2) -> o2.size() - o1.size()))
+                .forEach(n -> System.out.printf("Имя: %s \n Телефоны: %s \n",n.getKey(), n.getValue()));
 
 
 
 
 
 
-        System.out.println(phonebook);
-        System.out.println(sorted_book);
+
     }
 }
